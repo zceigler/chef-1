@@ -2,7 +2,7 @@
 # Cookbook Name:: apache
 # Recipe:: default
 #
-# Copyright 2016, YOUR_COMPANY_NAME
+# Copyright 2016, Zac Ceigler
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -42,3 +42,6 @@ end
 service "httpd" do
 	action [:enable, :start]
 end
+
+
+include_recipe "php::default"
