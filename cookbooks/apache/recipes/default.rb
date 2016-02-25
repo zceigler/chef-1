@@ -39,6 +39,19 @@ template "/content/sites/#{sitename}/index.html" do
 end
 end
 
+execute "rm /etc/httpd/conf.d/welcome.conf" do
+	only_if do
+		File.exist?("/etc/httpd/conf.d/welcome.conf")
+	end
+	notifies :restart, "service[httpd]"
+end
+
+execute "rm /etc/httpd/conf.d/README" do
+	only_if do
+		File.exist?("/etc/httpd/conf.d/README")
+	end
+end
+
 service "httpd" do
 	action [:enable, :start]
 end
